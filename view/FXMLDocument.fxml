@@ -1,17 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLDocumentController">
    <children>
-      <Button fx:id="buttonCreate" layoutX="66.0" layoutY="52.0" mnemonicParsing="false" onAction="#createDailyHealth" prefHeight="74.0" prefWidth="136.0" text="Create DailyHealth" />
-      <Button fx:id="buttonDelete" layoutX="394.0" layoutY="245.0" mnemonicParsing="false" onAction="#deleteDailyHealth" prefHeight="74.0" prefWidth="136.0" text="Delete DailyHealth" />
-      <Button fx:id="buttonUpdate" layoutX="66.0" layoutY="245.0" mnemonicParsing="false" onAction="#updateDailyHealth" prefHeight="74.0" prefWidth="136.0" text="Update DailyHealth" />
-      <Button fx:id="buttonRead" layoutX="394.0" layoutY="52.0" mnemonicParsing="false" onAction="#readDailyHealth" prefHeight="74.0" prefWidth="136.0" text="Read Daily Health" />
-      <Button layoutX="274.0" layoutY="188.0" mnemonicParsing="false" text="Click Me" />
-      <Button fx:id="buttonFind" layoutX="66.0" layoutY="151.0" mnemonicParsing="false" onAction="#queryMood" prefHeight="74.0" prefWidth="136.0" text="Find ID and Fat" />
-      <Button fx:id="buttonFind2" layoutX="394.0" layoutY="151.0" mnemonicParsing="false" onAction="#queryProtein" prefHeight="74.0" prefWidth="136.0" text="Find Mood and Fat" />
+      <Button fx:id="buttonCreate" layoutX="26.0" layoutY="25.0" mnemonicParsing="false" onAction="#createDailyHealth" prefHeight="34.0" prefWidth="126.0" text="Create DailyHealth" />
+      <Button fx:id="buttonDelete" layoutX="311.0" layoutY="77.0" mnemonicParsing="false" onAction="#deleteDailyHealth" prefHeight="16.0" prefWidth="119.0" text="Delete DailyHealth" />
+      <Button fx:id="buttonUpdate" layoutX="174.0" layoutY="77.0" mnemonicParsing="false" onAction="#updateDailyHealth" prefHeight="25.0" prefWidth="126.0" text="Update DailyHealth" />
+      <Button fx:id="buttonRead" layoutX="174.0" layoutY="25.0" mnemonicParsing="false" onAction="#readDailyHealth" prefHeight="34.0" prefWidth="126.0" text="Read Daily Health" />
+      <Button layoutX="524.0" layoutY="13.0" mnemonicParsing="false" text="Click Me" />
+      <Button fx:id="buttonFind" layoutX="26.0" layoutY="77.0" mnemonicParsing="false" onAction="#queryMood" prefHeight="25.0" prefWidth="126.0" text="Find mood" />
+      <Button fx:id="buttonFind2" layoutX="311.0" layoutY="25.0" mnemonicParsing="false" onAction="#queryProtein" prefHeight="34.0" prefWidth="119.0" text="Find Protein" />
+      <TableView layoutX="26.0" layoutY="194.0" prefHeight="200.0" prefWidth="526.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="ID" />
+          <TableColumn prefWidth="75.0" text="Carbs" />
+            <TableColumn prefWidth="75.0" text="Fat" />
+            <TableColumn prefWidth="75.0" text="Protein" />
+            <TableColumn prefWidth="75.0" text="Mood" />
+            <TableColumn prefWidth="150.0" text="Journal" />
+        </columns>
+      </TableView>
+      <Line endX="433.0" layoutX="127.0" layoutY="132.0" startX="-100.0" />
+      <Text layoutX="27.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="By ID:" />
+      <Text layoutX="26.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Daily Health" wrappingWidth="149.638671875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <TextField fx:id="searchField" layoutX="65.0" layoutY="162.0" />
+      <Button fx:id="buttonSearch" layoutX="300.0" layoutY="162.0" mnemonicParsing="false" onAction="#searchID" text="Search" />
    </children>
 </AnchorPane>

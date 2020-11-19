@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
@@ -46,6 +47,12 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Button buttonFind2;
+    
+    @FXML
+    private TextField searchField;
+
+    @FXML
+    private Button buttonSearch;
 
     //The following function uses code from the demo Dr. Billah has provided. It refers to the FXMLDocumentController class
     @FXML
@@ -194,7 +201,11 @@ public class FXMLDocumentController implements Initializable {
         label.setText("Hello World!");
     }
     
-    
+    @FXML
+    void searchID(ActionEvent event) {
+        System.out.println("Clicked");
+    }
+  
     //lines 68-74 have came from the Derby DB Setup + CRUD handout provided by Dr.Billah
     EntityManager manager;
     

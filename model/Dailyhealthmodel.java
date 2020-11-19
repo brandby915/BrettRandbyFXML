@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Dailyhealthmodel.findByFat", query = "SELECT d FROM Dailyhealthmodel d WHERE d.fat = :fat")
     , @NamedQuery(name = "Dailyhealthmodel.findByProtein", query = "SELECT d FROM Dailyhealthmodel d WHERE d.protein = :protein")
     , @NamedQuery(name = "Dailyhealthmodel.findByMood", query = "SELECT d FROM Dailyhealthmodel d WHERE d.mood = :mood")
-    , @NamedQuery(name = "Dailyhealthmodel.findByJournalentry", query = "SELECT d FROM Dailyhealthmodel d WHERE d.journalentry = :journalentry")
-    , @NamedQuery(name = "Dailyhealthmodel.findByIDAndFat", query = "SELECT d FROM Dailyhealthmodel d WHERE d.id = :id and d.fat = :fat")
-    , @NamedQuery(name = "Dailyhealthmodel.findByMoodAndFat", query = "SELECT d FROM Dailyhealthmodel d WHERE d.mood = :mood and d.fat = :fat")})
+    , @NamedQuery(name = "Dailyhealthmodel.findByJournalentry", query = "SELECT d FROM Dailyhealthmodel d WHERE d.journalentry = :journalentry")})
+    //, @NamedQuery(name = "Dailyhealthmodel.findByIDAndFat", query = "SELECT d FROM Dailyhealthmodel d WHERE d.id = :id and d.fat = :fat")
+    //, @NamedQuery(name = "Dailyhealthmodel.findByMoodAndFat", query = "SELECT d FROM Dailyhealthmodel d WHERE d.mood = :mood and d.fat = :fat")
 public class Dailyhealthmodel implements Serializable {
 
     private static final long serialVersionUID = 1L;
