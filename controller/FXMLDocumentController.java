@@ -6,6 +6,7 @@ package controller;
  * and open the template in the editor.
  */
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -14,12 +15,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
@@ -83,6 +88,33 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private Button advancedButton;
+    
+    @FXML
+    private Button buttonDetails;
+    
+    //this method draws inspiration from Dr. Billah's actionShowDetailsMethod
+    @FXML
+    void openDetails(ActionEvent event) throws IOException {
+        System.out.println("Clicked");
+        
+        Dailyhealthmodel selectedDaily = dailyTable.getSelectionModel().getSelectedItem();
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DetailedModelView.fxml"));
+        
+        Parent detailedModelView = loader.load();
+        
+        Scene tableScene = new Scene (detailedModelView);
+        
+        DetailedModelController detailedController = loader.getController();
+        
+        detailedController.initData(selectedDaily);
+        
+        Stage stage = new Stage();
+        stage.setScene(tableScene);
+        stage.show();
+        
+
+    }
 
     //the following method draws inspiration from Dr. Billah's advanced search method
     @FXML
