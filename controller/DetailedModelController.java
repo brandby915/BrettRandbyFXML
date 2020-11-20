@@ -58,4 +58,8 @@ public class DetailedModelController {
         assert buttonBack != null : "fx:id=\"buttonBack\" was not injected: check your FXML file 'DetailedModelView.fxml'.";
 
     }
+
+    void setPreviousScene(Scene currentScene) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

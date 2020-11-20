@@ -17,13 +17,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -92,6 +95,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button buttonDetails;
     
+    @FXML
+    private Button buttonDetails2;
+    
     //this method draws inspiration from Dr. Billah's actionShowDetailsMethod
     @FXML
     void openDetails(ActionEvent event) throws IOException {
@@ -114,6 +120,33 @@ public class FXMLDocumentController implements Initializable {
         stage.show();
         
 
+    }
+    
+    //this method draws inspiration from Dr.Billahs actionShowDetailsInPlace method
+    @FXML
+    void openDetailsPlace(ActionEvent event) throws IOException {
+        System.out.println("Clicked");
+        
+        Dailyhealthmodel selectedModel = dailyTable.getSelectionModel().getSelectedItem();
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DetailedModelView.fxml"));
+        
+        Parent detailedModelView = loader.load();
+        
+        Scene tableScene = new Scene(detailedModelView);
+        
+        DetailedModelController detailedController = loader.getController();
+        
+        detailedController.initData(selectedModel);
+        
+        Scene currentScene = ((Node) event.getSource()).getScene();
+        
+        detailedController.setPreviousScene(currentScene);
+        
+        Stage stage = (Stage) currentScene.getWindow();
+        
+        stage.setScene(tableScene);
+        stage.show();
     }
 
     //the following method draws inspiration from Dr. Billah's advanced search method
@@ -316,6 +349,15 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         manager = (EntityManager) Persistence.createEntityManagerFactory("BrettRandbyFXMLPU").createEntityManager();
+        
+        //tableID.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        //carb.setCellValueFactory(new PropertyValueFactory<>("Carbohydrates"));
+        //fat.setCellValueFactory(new PropertyValueFactory<>("Fat"));
+        //protein.setCellValueFactory(new PropertyValueFactory<>("Protein"));
+        //mood.setCellFactory(new PropertyValueFactory<>("Mood"));
+        //journal.setCellValueFactory(new PropertyValueFactory<>("Journal"));
+        
+        dailyTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }    
     
     
