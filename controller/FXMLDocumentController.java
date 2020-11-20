@@ -10,11 +10,15 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -53,6 +57,41 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Button buttonSearch;
+    
+    @FXML
+    private TableView<Dailyhealthmodel> dailyTable;
+
+    @FXML
+    private TableColumn<Dailyhealthmodel, Integer> tableID;
+
+    @FXML
+    private TableColumn<Dailyhealthmodel, Integer> carb;
+
+    @FXML
+    private TableColumn<Dailyhealthmodel, Integer> fat;
+
+    @FXML
+    private TableColumn<Dailyhealthmodel, Integer> protein;
+
+    @FXML
+    private TableColumn<Dailyhealthmodel, String> mood;
+
+    @FXML
+    private TableColumn<Dailyhealthmodel, String> journal;
+    
+    private ObservableList<Dailyhealthmodel> dailyData;
+    
+    //next method based on the method of setTableData provided by Dr. Billah
+    
+    public void setTableData(List<Dailyhealthmodel> dailyList) {
+        
+        dailyList = FXCollections.observableArrayList();
+        
+        dailyList.forEach(dailyList::add);
+        
+        dailyTable.setItems(dailyData);
+        dailyTable.refresh();
+    }
 
     //The following function uses code from the demo Dr. Billah has provided. It refers to the FXMLDocumentController class
     @FXML
@@ -150,7 +189,7 @@ public class FXMLDocumentController implements Initializable {
         System.out.println("Enter ID.");
         int id = scnr.nextInt();
         
-        //Dailyhealthmodel dh = readDailyHealth(id);
+        Dailyhealthmodel dh = readDailyHealth(id);
 
     }
 
@@ -201,12 +240,19 @@ public class FXMLDocumentController implements Initializable {
         label.setText("Hello World!");
     }
     
+    //the following method dervies information obtained by Dr. Billah's searchByNameAction method
     @FXML
     void searchID(ActionEvent event) {
         System.out.println("Clicked");
+        
+        String id = searchField.getId();
+        
+        List<Dailyhealthmodel> daily = readDailyHealth(id);
+        
+        setTableData(daily);
     }
   
-    //lines 68-74 have came from the Derby DB Setup + CRUD handout provided by Dr.Billah
+    //lines came from Derby DB Setup + CRUD handout provided by Dr.Billah
     EntityManager manager;
     
     @Override
@@ -328,6 +374,14 @@ public class FXMLDocumentController implements Initializable {
         System.out.println(model.getDailyhealthid() + " " + model.getMood() + model.getFat());
     }
     return models;
+    }
+
+    private List<Dailyhealthmodel> readDailyHealth(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private Dailyhealthmodel readDailyHealth(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
