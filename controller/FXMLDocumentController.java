@@ -81,6 +81,32 @@ public class FXMLDocumentController implements Initializable {
     
     private ObservableList<Dailyhealthmodel> dailyData;
     
+    @FXML
+    private Button advancedButton;
+
+    //the following method draws inspiration from Dr. Billah's advanced search method
+    @FXML
+    void advancedSearch(ActionEvent event) {
+        System.out.println("Clicked");
+        
+        String id = searchField.getId();
+
+    }
+    
+    public List<Dailyhealthmodel> readByIDAdvanced(int id) {
+        Query query = manager.createNamedQuery("Dailyhealthmodel.findByIDAdvanced");
+        
+        query.setParameter("id", id);
+        
+        List<Dailyhealthmodel> dailys = query.getResultList();
+        for (Dailyhealthmodel daily : dailys) {
+            System.out.println(daily.getDailyhealthid());
+        }
+        return dailys;
+    }
+        
+    
+    
     //next method based on the method of setTableData provided by Dr. Billah
     
     public void setTableData(List<Dailyhealthmodel> dailyList) {

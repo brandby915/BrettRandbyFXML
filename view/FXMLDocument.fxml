@@ -18,14 +18,14 @@
       <Button layoutX="524.0" layoutY="13.0" mnemonicParsing="false" text="Click Me" />
       <Button fx:id="buttonFind" layoutX="26.0" layoutY="77.0" mnemonicParsing="false" onAction="#queryMood" prefHeight="25.0" prefWidth="126.0" text="Find mood" />
       <Button fx:id="buttonFind2" layoutX="311.0" layoutY="25.0" mnemonicParsing="false" onAction="#queryProtein" prefHeight="34.0" prefWidth="119.0" text="Find Protein" />
-      <TableView layoutX="26.0" layoutY="194.0" prefHeight="200.0" prefWidth="526.0">
+      <TableView fx:id="dailyTable" layoutX="26.0" layoutY="194.0" prefHeight="200.0" prefWidth="526.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="ID" />
-          <TableColumn prefWidth="75.0" text="Carbs" />
-            <TableColumn prefWidth="75.0" text="Fat" />
-            <TableColumn prefWidth="75.0" text="Protein" />
-            <TableColumn prefWidth="75.0" text="Mood" />
-            <TableColumn prefWidth="150.0" text="Journal" />
+          <TableColumn fx:id="tableID" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="carb" prefWidth="75.0" text="Carbs" />
+            <TableColumn fx:id="fat" prefWidth="75.0" text="Fat" />
+            <TableColumn fx:id="protein" prefWidth="75.0" text="Protein" />
+            <TableColumn fx:id="mood" prefWidth="75.0" text="Mood" />
+            <TableColumn fx:id="journal" prefWidth="150.0" text="Journal" />
         </columns>
       </TableView>
       <Line endX="433.0" layoutX="127.0" layoutY="132.0" startX="-100.0" />
@@ -37,5 +37,6 @@
       </Text>
       <TextField fx:id="searchField" layoutX="65.0" layoutY="162.0" />
       <Button fx:id="buttonSearch" layoutX="300.0" layoutY="162.0" mnemonicParsing="false" onAction="#searchID" text="Search" />
+      <Button fx:id="advancedButton" layoutX="378.0" layoutY="162.0" mnemonicParsing="false" onAction="#advancedSearch" text="Advanced Search" />
    </children>
 </AnchorPane>
